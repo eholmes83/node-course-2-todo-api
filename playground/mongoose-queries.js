@@ -43,3 +43,16 @@ User.findById(user_id).then((user) => {
 }, (e) => {
     console.log(e)
 })
+
+Todo.findById(id).then((todo) => {
+    if(!ObjectID.isValid('5c4a29088a01a84974ae50b5')) {
+        console.log('Todo not found')
+    }
+
+    Todo.find({
+        _id: id
+    })
+    console.log('Todo by ID: ', todo)
+},  (e) => {
+    console.log(e)
+})
