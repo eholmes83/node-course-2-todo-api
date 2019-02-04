@@ -88,6 +88,13 @@ app.patch('/todos/:id', (req, res) => {
         if (!todo) {
             return res.status(404).send();
         }
+
+        if(_.isBoolean(body.completed) && body.completed) {
+            body.completedAt = new Date().getTime();
+        } else {
+            body.completed = false;
+            body.completedAt = null;
+        }
         res.send({ todo })
     }).catch((e) => {
         res.status(400).send();
